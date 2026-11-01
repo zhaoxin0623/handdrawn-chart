@@ -1,0 +1,226 @@
+{
+  "seed": 42,
+  "width": 1000,
+  "legendTitle": "Legend",
+  "title": {
+    "kicker": "café counter · illustrated notes",
+    "title": "Coffee order",
+    "subtitle": "From lining up to the cup in your hand"
+  },
+  "groups": [
+    {
+      "id": "queue",
+      "label": "Queue",
+      "color": "#5b8fd6",
+      "layout": "column"
+    },
+    {
+      "id": "pay",
+      "label": "Pay",
+      "color": "#e08a3c",
+      "layout": "column"
+    },
+    {
+      "id": "make",
+      "label": "Make",
+      "color": "#8f6bc9",
+      "layout": "column"
+    },
+    {
+      "id": "done",
+      "label": "Done",
+      "color": "#3aa39a",
+      "layout": "column"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "kind": "start",
+      "label": ""
+    },
+    {
+      "id": "inline",
+      "group": "queue",
+      "label": "in line"
+    },
+    {
+      "id": "ordered",
+      "group": "queue",
+      "label": "ordered"
+    },
+    {
+      "id": "paid",
+      "group": "pay",
+      "label": "paid"
+    },
+    {
+      "id": "refund",
+      "group": "pay",
+      "kind": "bug",
+      "label": "refunded"
+    },
+    {
+      "id": "making",
+      "group": "make",
+      "label": "being made"
+    },
+    {
+      "id": "dec",
+      "group": "make",
+      "kind": "decision",
+      "label": "drink ready?"
+    },
+    {
+      "id": "ready",
+      "group": "make",
+      "label": "ready"
+    },
+    {
+      "id": "hand",
+      "group": "done",
+      "label": "in your hand"
+    },
+    {
+      "id": "fix",
+      "group": "done",
+      "kind": "fix",
+      "label": "remake on the house"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "inline"
+    },
+    {
+      "from": "inline",
+      "to": "ordered",
+      "label": "you order"
+    },
+    {
+      "from": "ordered",
+      "to": "paid",
+      "label": "tap to pay"
+    },
+    {
+      "from": "paid",
+      "to": "making",
+      "label": "ticket prints"
+    },
+    {
+      "from": "paid",
+      "to": "refund",
+      "label": "card declined",
+      "style": "bug"
+    },
+    {
+      "from": "making",
+      "to": "dec"
+    },
+    {
+      "from": "dec",
+      "to": "ready",
+      "label": "yes"
+    },
+    {
+      "from": "dec",
+      "to": "making",
+      "label": "wrong drink"
+    },
+    {
+      "from": "ready",
+      "to": "making",
+      "label": "still wrong — remake"
+    },
+    {
+      "from": "ready",
+      "to": "hand",
+      "label": "name called"
+    },
+    {
+      "from": "ready",
+      "to": "fix",
+      "label": "offer free remake",
+      "style": "fix"
+    },
+    {
+      "from": "fix",
+      "to": "making",
+      "label": "back to the bar",
+      "style": "fix"
+    }
+  ],
+  "notes": [
+    {
+      "text": "Peak hour: expect 8–12 minutes\nbefore your name is called.",
+      "group": "make",
+      "side": "left"
+    },
+    {
+      "text": "Keep the receipt stub\nuntil you have the cup.",
+      "near": "paid",
+      "side": "left"
+    }
+  ],
+  "legend": [
+    {
+      "swatch": "bug",
+      "text": "unhappy path (refund)"
+    },
+    {
+      "swatch": "fix",
+      "text": "recovery / remake"
+    },
+    {
+      "swatch": "line",
+      "color": "#d22b22",
+      "text": "normal counter flow"
+    },
+    {
+      "swatch": "decision",
+      "text": "◇ check before handing over"
+    }
+  ],
+  "sidebar": {
+    "title": "Receipt board",
+    "panels": [
+      {
+        "title": "Now",
+        "lines": [
+          "3 ahead of you",
+          "oat milk latte"
+        ]
+      },
+      {
+        "title": "Barista",
+        "lines": [
+          "steam · pour · lid",
+          "call when ready"
+        ]
+      },
+      {
+        "title": "Tips",
+        "lines": [
+          "name on cup",
+          "double-check sugar"
+        ]
+      }
+    ]
+  },
+  "illustrations": [
+    {
+      "kind": "person",
+      "near": "queue",
+      "side": "left",
+      "caption": "guest"
+    },
+    {
+      "kind": "scorer",
+      "near": "done",
+      "side": "left",
+      "caption": "barista"
+    }
+  ],
+  "footer": "Hand-drawn example for the handdrawn-chart plugin · cream paper · pencil jitter · ticket nodes."
+}

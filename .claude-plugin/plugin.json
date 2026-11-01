@@ -1,0 +1,12 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "handdrawn-chart",
+  "displayName": "Hand-drawn chart",
+  "version": "1.0.0",
+  "description": "Render cream-paper, pencil-jitter statecharts from a JSON graph (SVG/HTML/PNG). No npm dependencies.",
+  "author": {
+    "name": "the authors"
+  },
+  "license": "MIT",
+  "keywords": ["diagram", "statechart", "svg", "hand-drawn", "visualization"]
+}
